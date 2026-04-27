@@ -1,0 +1,21 @@
+stages:
+- build
+- test
+
+build_Project :
+    stage: build
+    script:
+      - echo "Building the project..."
+      - mvn clean package
+      - echo "Build completed successfully!"
+    artifacts:
+      paths:
+        - target/*.jar
+
+test_Project:
+    stage: test
+    script:
+      - echo "Running tests..."
+      - mvn test
+      - echo "Tests completed successfully!"
+
