@@ -5,7 +5,7 @@ stages:
 build_Project :
     stage: build
     script:
-      - echo "Building the project..."
+      - echo "rahul Building the project..."
       - mvn clean package
       - echo "Build completed successfully!"
     artifacts:
