@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.bank</groupId>
+    <artifactId>banking-service</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <packaging>jar</packaging>
+
+    <name>banking-service</name>
+    <url>http://www.example.com</url>
+
+    <properties>
+  <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+  <!-- Your App.java uses arrow switch (case "1" -> {...}), so compile with Java 17 -->
+  <maven.compiler.source>17</maven.compiler.source>
+  <maven.compiler.target>17</maven.compiler.target>
+
+  <!-- Lock to a single JUnit 5 train -->
+  <junit.jupiter.version>5.10.2</junit.jupiter.version>
+  <junit.platform.version>1.10.2</junit.platform.version>
+
+  <!-- Modern Surefire with solid JUnit Platform support -->
+  <surefire.version>3.2.5</surefire.version>
+</properties>
+
+<dependencies>
+  <!-- Aggregated JUnit Jupiter (api + engine + params) all at the SAME version -->
+  <dependency>
+    <groupId>org.junit.jupiter</groupId>
+    <artifactId>junit-jupiter</artifactId>
+    <version>${junit.jupiter.version}</version>
+    <scope>test</scope>
+  </dependency>
+
+  <!-- JUnit Platform Suite for @Suite / @SelectPackages (matches Platform 1.10.x) -->
+  <dependency>
+    <groupId>org.junit.platform</groupId>
+    <artifactId>junit-platform-suite</artifactId>
+    <version>${junit.platform.version}</version>
+    <scope>test</scope>
+  </dependency>
+
+  <!-- Mockito -->
+  <dependency>
+    <groupId>org.mockito</groupId>
+    <artifactId>mockito-core</artifactId>
+    <version>5.11.0</version>
+    <scope>test</scope>
+  </dependency>
+  <dependency>
+    <groupId>org.mockito</groupId>
+    <artifactId>mockito-junit-jupiter</artifactId>
+    <version>5.11.0</version>
+    <scope>test</scope>
+  </dependency>
+
+  <!-- Only keep if you actually use MockedStatic; otherwise remove -->
+  <dependency>
+    <groupId>org.mockito</groupId>
+    <artifactId>mockito-inline</artifactId>
+    <version>5.2.0</version>
+    <scope>test</scope>
+  </dependency>
+</dependencies>
+
+<build>
+  <plugins>
+    <plugin>
+      <groupId>org.apache.maven.plugins</groupId>
+      <artifactId>maven-surefire-plugin</artifactId>
+      <version>${surefire.version}</version>
+      <configuration>
+        <!-- Default patterns (**/*Test.java) are fine; enable modulepath off -->
+        <useModulePath>false</useModulePath>
+
+        <!-- OPTIONAL: If you want Maven to also execute your @Suite class,
+             uncomment the includes below (and ensure the class ends with *Suite.java)
+        <includes>
+          <include>**/*Test.java</include>
+          <include>**/*Suite.java</include>
+        </includes>
+        -->
+      </configuration>
+    </plugin>
+  </plugins>
+</build>
+
+</project>
