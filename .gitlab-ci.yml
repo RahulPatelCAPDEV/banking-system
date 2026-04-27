@@ -17,5 +17,5 @@ test_Project:
     script:
       - echo "Running tests..."
       - mvn test
-      - echo "Tests completed successfully!"
+      - echo "Test completed successfully!"
 
